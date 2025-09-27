@@ -41,4 +41,4 @@ jobs:
       - name: Set ansible to use our vault-pass script
         run: echo "ANSIBLE_VAULT_PASSWORD_FILE=$(pwd)/vault-pass.sh" >> $GITHUB_ENV
       - name: Run test ansible playbook
-        run: ansible-playbook pb_test.yml
+        run: ansible-playbook -i inventory_testdep pb_test.yml
