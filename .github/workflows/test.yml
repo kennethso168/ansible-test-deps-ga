@@ -33,6 +33,9 @@ jobs:
           pwd
       - name: Generate SSH key
         run: ssh-keygen -t ed25519 -f "${HOME}/.ssh/id_ed25519" -q -P ""
+      - uses: tanmancan/action-setup-ssh-agent-key@1.0.0
+      - name: Add key
+        run: ssh-add
       - name: Store ansible-vault key to keyring
         run: keyring set ansible-vault key < <(echo '123456')
       - name: Run test ansible playbook
