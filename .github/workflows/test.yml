@@ -38,5 +38,7 @@ jobs:
         run: ssh-add
       - name: Store ansible-vault key to keyring
         run: keyring set ansible-vault key < <(echo '123456')
+      - name: Set ansible to use our vault-pass script
+        run: echo "ANSIBLE_VAULT_PASSWORD_FILE=$(pwd)/vault-pass.sh" >> $GITHUB_ENV
       - name: Run test ansible playbook
         run: ansible-playbook pb_test.yml

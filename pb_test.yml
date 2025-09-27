@@ -6,3 +6,8 @@
     - name: Debug
       ansible.builtin.debug:
         msg: "Hello world"
+
+    - name: Test ansible vault decryption
+      ansible.builtin.assert:
+        that:
+          - test_vault_secret == 'SuperSecret'
