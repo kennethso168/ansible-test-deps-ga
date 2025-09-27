@@ -1,0 +1,8 @@
+---
+- name: Test playbook that only tests the dependencies are working
+  hosts: localhost
+
+  tasks:
+    - name: Debug
+      ansible.builtin.debug:
+        msg: "Hello world"
