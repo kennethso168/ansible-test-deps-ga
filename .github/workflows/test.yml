@@ -31,5 +31,9 @@ jobs:
         run: |
           echo $HOME
           pwd
+      - name: Generate SSH key
+        run: ssh-keygen -t ed25519 -q -N ""
+      - name: Store ansible-vault key to keyring
+        run: keyring set ansible-vault key < <(echo '123456')
       - name: Run test ansible playbook
         run: ansible-playbook pb_test.yml
